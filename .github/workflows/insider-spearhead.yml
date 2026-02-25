@@ -15,16 +15,16 @@ on:
       dont_dispatch:
         type: boolean
         description: Disable dispatch
-  schedule:
-    - cron: '0 7 * * *'
+  # schedule:
+    # - cron: '0 7 * * *'
 
 jobs:
   build:
     runs-on: macos-14
     env:
-      APP_NAME: VSCodium
+      APP_NAME: THE YVN CODE
       ASSETS_REPOSITORY: ${{ github.repository }}-insiders
-      BINARY_NAME: codium-insiders
+      BINARY_NAME: yvncode-insiders
       GH_REPO_PATH: ${{ github.repository }}
       ORG_NAME: ${{ github.repository_owner }}
       OS_NAME: osx

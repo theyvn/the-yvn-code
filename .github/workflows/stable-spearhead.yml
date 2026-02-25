@@ -12,16 +12,16 @@ on:
       dont_update:
         type: boolean
         description: Don't update VSCode
-  schedule:
-    - cron: '0 18 * * *'
+  # schedule:
+    # - cron: '0 18 * * *'
 
 jobs:
   build:
     runs-on: macos-14
     env:
-      APP_NAME: VSCodium
+      APP_NAME: THE YVN CODE
       ASSETS_REPOSITORY: ${{ github.repository }}
-      BINARY_NAME: codium
+      BINARY_NAME: yvncode
       GH_REPO_PATH: ${{ github.repository }}
       ORG_NAME: ${{ github.repository_owner }}
       OS_NAME: osx
