@@ -26,10 +26,10 @@ fc-cache -r
 
 ### <a id="linux-rendering-glitches"></a>*Text and/or the entire interface not appearing*
 
-You have likely encountered [a bug in Chromium and Electron](microsoft/vscode#190437) when compiling Mesa shaders, which has affected all Visual Studio Code and VSCodium versions for Linux distributions since 1.82.  The current workaround (see microsoft/vscode#190437) is to delete the GPU cache as follows:
+You have likely encountered [a bug in Chromium and Electron](microsoft/vscode#190437) when compiling Mesa shaders, which has affected all Visual Studio Code and THE YVN CODE versions for Linux distributions since 1.82.  The current workaround (see microsoft/vscode#190437) is to delete the GPU cache as follows:
 
 ```bash
-rm -rf ~/.config/VSCodium/GPUCache
+rm -rf ~/.config/THE YVN CODE/GPUCache
 ```
 
 ### <a id="linux-kde-global-menu"></a>*Global menu workaround for KDE*
@@ -66,7 +66,7 @@ Credits: [Gerson](https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/issues/
 
 ### <a id="linux-remote-ssh"></a>*Remote SSH doesn't work*
 
-Use the VSCodium's compatible extension [Open Remote - SSH](https://open-vsx.org/extension/jeanp413/open-remote-ssh).
+Use the THE YVN CODE's compatible extension [Open Remote - SSH](https://open-vsx.org/extension/jeanp413/open-remote-ssh).
 
 On the server, in the `sshd` config, `AllowTcpForwarding` need to be set to `yes`.
 
