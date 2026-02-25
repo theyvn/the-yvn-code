@@ -12,17 +12,13 @@ on:
       checkout_pr:
         type: string
         description: Checkout PR
-  repository_dispatch:
-    types: [stable]
-  push:
-    branches: [ master ]
-    paths-ignore:
-    - '**/*.md'
-    - 'upstream/*.json'
-  pull_request:
-    branches: [ master ]
-    paths-ignore:
-    - '**/*.md'
+  # Отключено — macOS сборка не нужна
+  # repository_dispatch:
+  #   types: [stable]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
 
 env:
   APP_NAME: THE YVN CODE

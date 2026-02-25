@@ -12,17 +12,13 @@ on:
       checkout_pr:
         type: string
         description: Checkout PR
-  repository_dispatch:
-    types: [insider]
-  push:
-    branches: [ insider ]
-    paths-ignore:
-    - '**/*.md'
-    - 'upstream/*.json'
-  pull_request:
-    branches: [ insider ]
-    paths-ignore:
-    - '**/*.md'
+  # Отключено — insider/macOS сборки пока не нужны
+  # repository_dispatch:
+  #   types: [insider]
+  # push:
+  #   branches: [ insider ]
+  # pull_request:
+  #   branches: [ insider ]
 
 env:
   APP_NAME: THE YVN CODE
