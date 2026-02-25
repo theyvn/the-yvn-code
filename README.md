@@ -1,13 +1,13 @@
 <div id="the-yvn-code-logo" align="center">
     <br />
-    <img src="./docs/assets/logo.png" alt="THE YVN CODE Logo" width="200"/>
+    <img src="./docs/logo.png" alt="THE YVN CODE Logo" width="200"/>
     <h1>THE YVN CODE</h1>
     <h3>Code editor by THE YVN — based on VS Code, free from telemetry</h3>
 </div>
 
 <div id="badges" align="center">
 
-[![license](https://img.shields.io/github/license/the-yvn/the-yvn-code.svg)](https://github.com/the-yvn/the-yvn-code/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/theyvn/the-yvn-code.svg)](https://github.com/theyvn/the-yvn-code/blob/master/LICENSE)
 
 </div>
 
@@ -24,7 +24,7 @@
 ## <a id="download-install"></a>Скачать/Установить
 
 Скачать последний релиз:
-[stable](https://github.com/the-yvn/the-yvn-code/releases)
+[stable](https://github.com/theyvn/the-yvn-code/releases)
 
 ### GNU/Linux
 
@@ -38,11 +38,11 @@ sudo rpm -i yvncode_*.rpm
 
 ### Windows
 
-Скачайте `.exe` установщик из [релизов](https://github.com/the-yvn/the-yvn-code/releases).
+Скачайте `.exe` установщик из [релизов](https://github.com/theyvn/the-yvn-code/releases).
 
 ## <a id="build"></a>Сборка
 
-Инструкции по сборке: [docs/howto-build.md](https://github.com/the-yvn/the-yvn-code/blob/master/docs/howto-build.md)
+Инструкции по сборке: [docs/howto-build.md](https://github.com/theyvn/the-yvn-code/blob/master/docs/howto-build.md)
 
 ## <a id="why"></a>Зачем это существует
 
@@ -72,7 +72,7 @@ THE YVN CODE использует [open-vsx.org](https://open-vsx.org/) — от
 
 ## <a id="license"></a>Лицензия
 
-[MIT](https://github.com/the-yvn/the-yvn-code/blob/master/LICENSE)
+[MIT](https://github.com/theyvn/the-yvn-code/blob/master/LICENSE)
 
 ---
 
