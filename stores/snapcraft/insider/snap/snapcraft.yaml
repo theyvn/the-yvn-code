@@ -32,8 +32,8 @@ parts:
       mkdir -p "${SNAPCRAFT_PART_INSTALL}/meta/gui"
       cp "${SNAPCRAFT_PART_INSTALL}/usr/share/yvncode-insiders/resources/app/resources/linux/code.png" "${SNAPCRAFT_PART_INSTALL}/meta/gui/yvncode-insiders.png"
       # Update paths
-      sed -i 's|Exec=/usr/share/codium/codium-insiders|Exec=yvncode-insiders --force-user-env|g' "${SNAPCRAFT_PART_INSTALL}/usr/share/applications/yvncode-insiders.desktop"
-      sed -i 's|Exec=/usr/share/codium/codium-insiders|Exec=yvncode-insiders --force-user-env|g' "${SNAPCRAFT_PART_INSTALL}/usr/share/applications/yvncode-insiders-url-handler.desktop"
+      sed -i 's|Exec=/usr/share/yvncode-insiders/yvncode-insiders|Exec=yvncode-insiders --force-user-env|g' "${SNAPCRAFT_PART_INSTALL}/usr/share/applications/yvncode-insiders.desktop"
+      sed -i 's|Exec=/usr/share/yvncode-insiders/yvncode-insiders|Exec=yvncode-insiders --force-user-env|g' "${SNAPCRAFT_PART_INSTALL}/usr/share/applications/yvncode-insiders-url-handler.desktop"
       sed -i 's|Icon=yvncode-insiders|Icon=${SNAP}/meta/gui/yvncode-insiders.png|g' "${SNAPCRAFT_PART_INSTALL}/usr/share/applications/yvncode-insiders.desktop"
       sed -i 's|Icon=yvncode-insiders|Icon=${SNAP}/meta/gui/yvncode-insiders.png|g' "${SNAPCRAFT_PART_INSTALL}/usr/share/applications/yvncode-insiders-url-handler.desktop"
     build-packages:
@@ -76,7 +76,7 @@ parts:
       - -usr/share/icons
       - -usr/share/lintian
       - -usr/share/man
-      - -usr/share/codium-insiders/chrome-sandbox
+      - -usr/share/yvncode-insiders/chrome-sandbox
     build-attributes:
       - enable-patchelf
     override-prime: |
@@ -89,12 +89,12 @@ parts:
 
   electron-launch:
     after:
-      - codium-insiders
+      - yvncode-insiders
     plugin: dump
     source: snap/local/bin
 
 apps:
-  codium:
+  yvncode-insiders:
     command: electron-launch $SNAP/usr/share/yvncode-insiders/bin/yvncode-insiders --no-sandbox
     desktop: usr/share/applications/yvncode-insiders.desktop
     common-id: yvncode-insiders.desktop

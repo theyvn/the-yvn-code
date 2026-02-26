@@ -42,7 +42,7 @@ Install these packages on Fedora:
 
 On Ubuntu this package is called `libdbusmenu-glib4`.
 
-Credits: [Gerson](https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/issues/91)
+Credits: [Gerson](https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/issues/91) (оригинальный VSCodium)
 
 ### <a id="linux-flatpak-most-common-issues"></a>*Flatpak most common issues*
 
@@ -60,9 +60,9 @@ Credits: [Gerson](https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/issues/
   TL;DR: use https://open-vsx.org/extension/zokugun/vsix-manager
 
 - SDKs
-  see [this](https://github.com/flathub/com.vscodium.codium?tab=readme-ov-file#sdks) (оригинальный VSCodium flatpak)
+  see [this](https://github.com/flathub/com.vscodium.codium?tab=readme-ov-file#sdks) (upstream VSCodium flatpak)
 
-- If you have any other problems with the flatpak package try to look on the [FAQ](https://github.com/flathub/com.vscodium.codium?tab=readme-ov-file#faq) (оригинальный VSCodium flatpak).
+- If you have any other problems with the flatpak package try to look on the [FAQ](https://github.com/flathub/com.vscodium.codium?tab=readme-ov-file#faq) (upstream VSCodium flatpak).
 
 ### <a id="linux-remote-ssh"></a>*Remote SSH doesn't work*
 
