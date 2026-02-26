@@ -20,7 +20,7 @@ The following command should help:
 
 ```
 rm -rf ~/.cache/fontconfig
-rm -rf ~/snap/codium/common/.cache
+rm -rf ~/snap/yvncode/common/.cache
 fc-cache -r
 ```
 
@@ -48,7 +48,7 @@ Credits: [Gerson](https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/issues/
 
 - blurry screen with HiDPI on wayland run:
   ```bash
-  flatpak override --user --nosocket=wayland com.vscodium.codium
+  flatpak override --user --nosocket=wayland com.theyvn.yvncode
   ```
 - To execute commands on the host system, run inside the sandbox
   ```bash
@@ -60,9 +60,9 @@ Credits: [Gerson](https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/issues/
   TL;DR: use https://open-vsx.org/extension/zokugun/vsix-manager
 
 - SDKs
-  see [this](https://github.com/flathub/com.vscodium.codium?tab=readme-ov-file#sdks)
+  see [this](https://github.com/flathub/com.vscodium.codium?tab=readme-ov-file#sdks) (оригинальный VSCodium flatpak)
 
-- If you have any other problems with the flatpak package try to look on the [FAQ](https://github.com/flathub/com.vscodium.codium?tab=readme-ov-file#faq) maybe the solution is already there or open an [issue](https://github.com/flathub/com.vscodium.codium/issues).
+- If you have any other problems with the flatpak package try to look on the [FAQ](https://github.com/flathub/com.vscodium.codium?tab=readme-ov-file#faq) (оригинальный VSCodium flatpak).
 
 ### <a id="linux-remote-ssh"></a>*Remote SSH doesn't work*
 
@@ -75,6 +75,6 @@ It might requires additional dependencies due to the OS/distro (alpine).
 ### <a id="linux-no-window"></a>*The window doesn't show up*
 
 If you are under Wayland:
-- try the command `codium --verbose`
+- try the command `yvncode --verbose`
 - if you see an error like `:ERROR:ui/gl/egl_util.cc:92] EGL Driver message (Error) eglCreateContext: Requested version is not supported`
-- try `codium --ozone-platform=x11`
+- try `yvncode --ozone-platform=x11`

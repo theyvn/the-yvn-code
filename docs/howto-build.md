@@ -114,7 +114,7 @@ cd ./stores/snapcraft/insider
 snapcraft --use-lxd
 
 # verify the snap
-review-tools.snap-review --allow-classic codium*.snap
+review-tools.snap-review --allow-classic yvncode*.snap
 ```
 
 ## <a id="patch-update-process"></a>Patch Update Process
