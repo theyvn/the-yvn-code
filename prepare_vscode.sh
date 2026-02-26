@@ -244,6 +244,24 @@ replace "s|\\[\\/\\* BUILTIN_ANNOUNCEMENTS \\*\\/\\]|$( tr -d '\n' < ../announce
 
 ../undo_telemetry.sh
 
+# Устанавливаем русский как язык по умолчанию при первом запуске
+# VS Code хранит шаблон argv.json в src/vs/code/electron-main/
+# Ищем файл с шаблоном и заменяем locale "en" -> "ru"
+LOCALE_PATCHED="no"
+for f in $(grep -rl '"locale"' src/vs/ 2>/dev/null | head -20); do
+  if grep -q 'enable-crash-reporter' "${f}" 2>/dev/null && grep -q '"locale"' "${f}" 2>/dev/null; then
+    sed -i "s/\"locale\": *\"en\"/\"locale\": \"ru\"/g" "${f}"
+    sed -i "s/'locale': *'en'/'locale': 'ru'/g" "${f}"
+    sed -i 's/`"locale": "en"`/`"locale": "ru"`/g' "${f}"
+    sed -i "s/locale: 'en'/locale: 'ru'/g" "${f}"
+    echo "Locale по умолчанию изменён на ru в: ${f}"
+    LOCALE_PATCHED="yes"
+  fi
+done
+if [[ "${LOCALE_PATCHED}" == "no" ]]; then
+  echo "WARNING: Не найден шаблон argv.json для патча locale. Русский язык будет предложен при первом запуске."
+fi
+
 replace 's|Microsoft Corporation|THE YVN|' build/lib/electron.ts
 replace 's|([0-9]) Microsoft|\1 THE YVN|' build/lib/electron.ts
 

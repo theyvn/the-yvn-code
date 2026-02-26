@@ -34,6 +34,9 @@ if [[ "${SHOULD_BUILD}" == "yes" ]]; then
 
     find "../VSCode-darwin-${VSCODE_ARCH}" -print0 | xargs -0 touch -c
 
+    # Встраиваем русский языковой пакет
+    . ../install_langpack.sh
+
     . ../build_cli.sh
 
     VSCODE_PLATFORM="darwin"
@@ -47,6 +50,9 @@ if [[ "${SHOULD_BUILD}" == "yes" ]]; then
       node build/lib/policies/policyGenerator.ts build/lib/policies/policyData.jsonc win32
 
       npm run gulp "vscode-win32-${VSCODE_ARCH}-min-ci"
+
+      # Встраиваем русский языковой пакет
+      . ../install_langpack.sh
 
       if [[ "${VSCODE_ARCH}" != "x64" ]]; then
         SHOULD_BUILD_REH="no"
@@ -70,6 +76,9 @@ if [[ "${SHOULD_BUILD}" == "yes" ]]; then
       npm run gulp "vscode-linux-${VSCODE_ARCH}-min-ci"
 
       find "../VSCode-linux-${VSCODE_ARCH}" -print0 | xargs -0 touch -c
+
+      # Встраиваем русский языковой пакет
+      . ../install_langpack.sh
 
       . ../build_cli.sh
     fi

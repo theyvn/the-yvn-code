@@ -33,6 +33,9 @@ node build/lib/policies/policyGenerator.ts build/lib/policies/policyData.jsonc w
 
 npm run gulp "vscode-win32-${VSCODE_ARCH}-min-ci"
 
+# Встраиваем русский языковой пакет в сборку
+. ../install_langpack.sh
+
 . ../build_cli.sh
 
 if [[ "${VSCODE_ARCH}" == "x64" ]]; then
