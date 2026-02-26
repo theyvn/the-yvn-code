@@ -50,24 +50,22 @@ if ! declare -F load_windows_ico &>/dev/null; then
 fi
 
 build_darwin_main() { # {{{
-  if [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/darwin/code.icns" ]]; then
-    mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/darwin"
+  mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/darwin"
 
-    if [[ "$1" == "no-template" ]]; then
-      rsvg-convert -w 1024 -h 1024 "icons/${QUALITY}/codium_cnl.svg" -o "code_1024.png"
-    else
-      rsvg-convert -w 655 -h 655 "icons/${QUALITY}/codium_cnl.svg" -o "code_logo.png"
-      composite "code_logo.png" -gravity center "${VSCODE_PREFIX}icons/template_macos.png" "code_1024.png"
-    fi
-
-    convert "code_1024.png" -resize 512x512 code_512.png
-    convert "code_1024.png" -resize 256x256 code_256.png
-    convert "code_1024.png" -resize 128x128 code_128.png
-
-    png2icns "${SRC_PREFIX}src/${QUALITY}/resources/darwin/code.icns" code_1024.png code_512.png code_256.png code_128.png
-
-    rm -f code_1024.png code_512.png code_256.png code_128.png code_logo.png
+  if [[ "$1" == "no-template" ]]; then
+    rsvg-convert -w 1024 -h 1024 "icons/${QUALITY}/codium_cnl.svg" -o "code_1024.png"
+  else
+    rsvg-convert -w 655 -h 655 "icons/${QUALITY}/codium_cnl.svg" -o "code_logo.png"
+    composite "code_logo.png" -gravity center "${VSCODE_PREFIX}icons/template_macos.png" "code_1024.png"
   fi
+
+  convert "code_1024.png" -resize 512x512 code_512.png
+  convert "code_1024.png" -resize 256x256 code_256.png
+  convert "code_1024.png" -resize 128x128 code_128.png
+
+  png2icns "${SRC_PREFIX}src/${QUALITY}/resources/darwin/code.icns" code_1024.png code_512.png code_256.png code_128.png
+
+  rm -f code_1024.png code_512.png code_256.png code_128.png code_logo.png
 } # }}}
 
 build_darwin_types() { # {{{
@@ -81,7 +79,7 @@ build_darwin_types() { # {{{
     if [[ -f "${file}" ]]; then
       name=$(basename "${file}" '.icns')
 
-      if [[ "${name}" != 'code' ]] && [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/darwin/${name}.icns" ]]; then
+      if [[ "${name}" != 'code' ]]; then
         icns2png -x -s 512x512 "${file}" -o .
 
         composite -blend 100% -geometry +323+365 "${VSCODE_PREFIX}icons/corner_512.png" "${name}_512x512x32.png" "${name}.png"
@@ -100,50 +98,32 @@ build_darwin_types() { # {{{
 } # }}}
 
 build_linux_main() { # {{{
-  if [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png" ]]; then
-    mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/linux"
+  mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/linux"
+  load_linux_png "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png"
 
-    load_linux_png "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png"
-  fi
-
-  if [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/linux/rpm/code.xpm" ]]; then
-    mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/linux/rpm"
-
-    convert "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png" "${SRC_PREFIX}src/${QUALITY}/resources/linux/rpm/code.xpm"
-  fi
+  mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/linux/rpm"
+  convert "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png" "${SRC_PREFIX}src/${QUALITY}/resources/linux/rpm/code.xpm"
 } # }}}
 
 build_media() { # {{{
-  if [[ ! -f "${SRC_PREFIX}src/${QUALITY}/src/vs/workbench/browser/media/code-icon.svg" ]]; then
-    mkdir -p "${SRC_PREFIX}src/${QUALITY}/src/vs/workbench/browser/media"
+  mkdir -p "${SRC_PREFIX}src/${QUALITY}/src/vs/workbench/browser/media"
 
-    cp "icons/${QUALITY}/codium_clt.svg" "${SRC_PREFIX}src/${QUALITY}/src/vs/workbench/browser/media/code-icon.svg"
-    gsed -i 's|width="100" height="100"|width="1024" height="1024"|' "${SRC_PREFIX}src/${QUALITY}/src/vs/workbench/browser/media/code-icon.svg"
-  fi
+  cp -f "icons/${QUALITY}/codium_clt.svg" "${SRC_PREFIX}src/${QUALITY}/src/vs/workbench/browser/media/code-icon.svg"
+  sed -i 's|width="256" height="256"|width="1024" height="1024"|' "${SRC_PREFIX}src/${QUALITY}/src/vs/workbench/browser/media/code-icon.svg"
 } # }}}
 
 build_server() { # {{{
   mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/server"
 
-  if [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/server/favicon.ico" ]]; then
-    load_windows_ico "${SRC_PREFIX}src/${QUALITY}/resources/server/favicon.ico"
-  fi
-
-  if [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/server/code-192.png" ]]; then
-    convert -size "192x192" "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png" "${SRC_PREFIX}src/${QUALITY}/resources/server/code-192.png"
-  fi
-
-  if [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/server/code-512.png" ]]; then
-    convert -size "512x512" "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png" "${SRC_PREFIX}src/${QUALITY}/resources/server/code-512.png"
-  fi
+  load_windows_ico "${SRC_PREFIX}src/${QUALITY}/resources/server/favicon.ico"
+  convert -size "192x192" "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png" "${SRC_PREFIX}src/${QUALITY}/resources/server/code-192.png"
+  convert -size "512x512" "${SRC_PREFIX}src/${QUALITY}/resources/linux/code.png" "${SRC_PREFIX}src/${QUALITY}/resources/server/code-512.png"
 } # }}}
 
 build_windows_main() { # {{{
-  if [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/win32/code.ico" ]]; then
-    mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/win32"
+  mkdir -p "${SRC_PREFIX}src/${QUALITY}/resources/win32"
 
-    load_windows_ico "${SRC_PREFIX}src/${QUALITY}/resources/win32/code.ico"
-  fi
+  load_windows_ico "${SRC_PREFIX}src/${QUALITY}/resources/win32/code.ico"
 } # }}}
 
 build_windows_type() { # {{{
@@ -155,20 +135,18 @@ build_windows_type() { # {{{
   LOGO_SIZE="$4"
   GRAVITY="$5"
 
-  if [[ ! -f "${FILE_PATH}" ]]; then
-    if [[ "${FILE_PATH##*.}" == "png" ]]; then
-      convert -size "${IMG_SIZE}" "${IMG_BG_COLOR}" PNG32:"${FILE_PATH}"
-    else
-      convert -size "${IMG_SIZE}" "${IMG_BG_COLOR}" "${FILE_PATH}"
-    fi
+  if [[ "${FILE_PATH##*.}" == "png" ]]; then
+    convert -size "${IMG_SIZE}" "${IMG_BG_COLOR}" PNG32:"${FILE_PATH}"
+  else
+    convert -size "${IMG_SIZE}" "${IMG_BG_COLOR}" "${FILE_PATH}"
+  fi
 
-    rsvg-convert -w "${LOGO_SIZE}" -h "${LOGO_SIZE}" "icons/${QUALITY}/codium_cnl.svg" -o "code_logo.png"
+  rsvg-convert -w "${LOGO_SIZE}" -h "${LOGO_SIZE}" "icons/${QUALITY}/codium_cnl.svg" -o "code_logo.png"
 
-    if [[ "${GRAVITY}" == "center" ]]; then
-      composite -gravity "${GRAVITY}" "code_logo.png" "${FILE_PATH}" "${FILE_PATH}"
-    else
-      composite -gravity NorthWest -geometry "${GRAVITY}" "code_logo.png" "${FILE_PATH}" "${FILE_PATH}"
-    fi
+  if [[ "${GRAVITY}" == "center" ]]; then
+    composite -gravity "${GRAVITY}" "code_logo.png" "${FILE_PATH}" "${FILE_PATH}"
+  else
+    composite -gravity NorthWest -geometry "${GRAVITY}" "code_logo.png" "${FILE_PATH}" "${FILE_PATH}"
   fi
 } # }}}
 
@@ -181,7 +159,7 @@ build_windows_types() { # {{{
     if [[ -f "${file}" ]]; then
       name=$(basename "${file}" '.ico')
 
-      if [[ "${name}" != 'code' ]] && [[ ! -f "${SRC_PREFIX}src/${QUALITY}/resources/win32/${name}.ico" ]]; then
+      if [[ "${name}" != 'code' ]]; then
         icotool -x -w 256 "${file}"
 
         composite -geometry +150+185 "code_logo.png" "${name}_1_256x256x32.png" "${name}.png"
